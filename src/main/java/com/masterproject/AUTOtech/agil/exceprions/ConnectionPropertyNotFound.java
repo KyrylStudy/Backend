@@ -1,10 +1,10 @@
 package com.masterproject.AUTOtech.agil.exceprions;
 
-public class BusPropertyNotFound extends RuntimeException{
+public class ConnectionPropertyNotFound extends RuntimeException{
 	
 	private static final long serialVerisionUID = 1;
 
-    public BusPropertyNotFound(String message) {
+    public ConnectionPropertyNotFound(String message) {
         super(message);
     }
 

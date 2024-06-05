@@ -13,26 +13,26 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.masterproject.AUTOtech.agil.dto.BusPropertyDto;
-import com.masterproject.AUTOtech.agil.service.BusPropertyService;
+import com.masterproject.AUTOtech.agil.dto.ConnectionPropertyDto;
+import com.masterproject.AUTOtech.agil.service.ConnectionPropertyService;
 
 
 
 @RestController
 @RequestMapping("/api/")
-public class BusPropertyController {
+public class ConnectionPropertyController {
 
-    private BusPropertyService busPropertyService;
+    private ConnectionPropertyService connectionPropertyService;
 
-    public BusPropertyController(BusPropertyService busPropertyService) {
+    public ConnectionPropertyController(ConnectionPropertyService connectionPropertyService) {
         super();
-        this.busPropertyService = busPropertyService;
+        this.connectionPropertyService = connectionPropertyService;
     }
 
     // Add Bus Property REST API
     @PostMapping("bus_property/{bus_id}")
-    public ResponseEntity<BusPropertyDto> addBusProperty(@PathVariable(value="bus_id") Long bus_id, @RequestBody BusPropertyDto busPropertyDto) {
-        return new ResponseEntity<>(busPropertyService.createBusProperty(bus_id, busPropertyDto), HttpStatus.CREATED);
+    public ResponseEntity<ConnectionPropertyDto> addBusProperty(@PathVariable(value="bus_id") Long bus_id, @RequestBody ConnectionPropertyDto connectionPropertyDto) {
+        return new ResponseEntity<>(connectionPropertyService.createBusProperty(bus_id, connectionPropertyDto), HttpStatus.CREATED);
     }
 
     // Get EcuSoftware REST API
@@ -44,22 +44,22 @@ public class BusPropertyController {
     
     //Get All Bus Properties REST API
     @GetMapping("bus_properties/{bus_id}")
-    public ResponseEntity<List<BusPropertyDto>> getAllBusProperties(@PathVariable(value="bus_id") Long bus_id){
-    	List<BusPropertyDto> busProperty = busPropertyService.getAllBusPropertyByBusId(bus_id);
+    public ResponseEntity<List<ConnectionPropertyDto>> getAllBusProperties(@PathVariable(value="bus_id") Long bus_id){
+    	List<ConnectionPropertyDto> busProperty = connectionPropertyService.getAllBusPropertyByBusId(bus_id);
     	return ResponseEntity.ok(busProperty);
     }
     
 	//Update Bus Property by Id REST API
 	@PutMapping("bus_property/{id}/update")
-	public ResponseEntity<BusPropertyDto> updateBusProperty(@RequestBody BusPropertyDto busPropertyDto,@PathVariable("id") Long id) {
-		BusPropertyDto response = busPropertyService.updateBusProperty(busPropertyDto, id);
+	public ResponseEntity<ConnectionPropertyDto> updateBusProperty(@RequestBody ConnectionPropertyDto connectionPropertyDto,@PathVariable("id") Long id) {
+		ConnectionPropertyDto response = connectionPropertyService.updateBusProperty(connectionPropertyDto, id);
 		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
     
 	//Delete Bus Property by Id REST API
 	@DeleteMapping("bus_property/{id}/delete")
 	public ResponseEntity<String> deleteBusPropertyId(@PathVariable("id") Long id) {
-		busPropertyService.deleteBusPropertyId(id);
+		connectionPropertyService.deleteBusPropertyId(id);
 		return new ResponseEntity<>("Bus Property deleted!", HttpStatus.OK);
 	}
 }

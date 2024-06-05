@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class BusDto {
+public class ConnectionDto {
 	
 	private Long id;
 	private String name;

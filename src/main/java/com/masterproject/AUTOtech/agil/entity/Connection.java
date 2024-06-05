@@ -20,7 +20,7 @@ import lombok.Data;
 @AllArgsConstructor
 @Table(name = "Bus")
 @Entity
-public class Bus {
+public class Connection {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -61,8 +61,8 @@ public class Bus {
     private Architecture architecture;
     
 	@Builder.Default
-	@OneToMany(mappedBy = "bus", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<BusProperty> busProperty = new ArrayList<BusProperty>();
+	@OneToMany(mappedBy = "connection", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ConnectionProperty> connectionProperty = new ArrayList<ConnectionProperty>();
 	
 	/*@Builder.Default
 	@OneToMany(mappedBy = "bus", cascade = CascadeType.ALL, orphanRemoval = true)

@@ -8,7 +8,7 @@ import lombok.AllArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class BusPropertyDto {
+public class ConnectionPropertyDto {
 	
 	private Long id;
 	private String name;

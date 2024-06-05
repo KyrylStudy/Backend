@@ -16,7 +16,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Entity
 @Table(name = "bus_property")
-public class BusProperty {
+public class ConnectionProperty {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,7 +30,7 @@ public class BusProperty {
     
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "bus_id")
-    private Bus bus;
+    private Connection connection;
    
     
 }

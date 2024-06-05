@@ -41,7 +41,7 @@ public class Architecture {
 	
 	@Builder.Default
 	@OneToMany(mappedBy = "architecture", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Bus> bus = new ArrayList<Bus>();
+    private List<Connection> connection = new ArrayList<Connection>();
 
 }
 
