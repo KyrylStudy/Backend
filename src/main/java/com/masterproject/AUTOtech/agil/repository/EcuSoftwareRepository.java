@@ -7,6 +7,6 @@ import java.util.List;
 
 
 public interface EcuSoftwareRepository extends JpaRepository<EcuSoftware, Long>{
-	List<EcuSoftware> findByEcuId(Long id);
+	List<EcuSoftware> findByHardwareId(Long id);
 } 
 

@@ -16,50 +16,50 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 
-import com.masterproject.AUTOtech.agil.dto.ECUdto;
+import com.masterproject.AUTOtech.agil.dto.HardwareDto;
 import com.masterproject.AUTOtech.agil.dto.EcuSoftwareDto;
-import com.masterproject.AUTOtech.agil.service.ECUService;
+import com.masterproject.AUTOtech.agil.service.HardwareService;
 
 @RestController
 @RequestMapping("/api/ecus")
-public class ECUController {
+public class HardwareController {
 
-	private ECUService ecuService;
+	private HardwareService hardwareService;
 
-	public ECUController(ECUService ecuService) {
+	public HardwareController(HardwareService hardwareService) {
 		super();
-		this.ecuService = ecuService;
+		this.hardwareService = hardwareService;
 	}
 	
 	//Add ECU REST API
 	@PostMapping("/{architecture_id}/ecu")
-	public ResponseEntity<ECUdto> createECU(@PathVariable(value="architecture_id") Long architecture_id, @RequestBody ECUdto ecuDto){
-		return new ResponseEntity<>(ecuService.createECU(architecture_id, ecuDto), HttpStatus.CREATED);
+	public ResponseEntity<HardwareDto> createECU(@PathVariable(value="architecture_id") Long architecture_id, @RequestBody HardwareDto ecuDto){
+		return new ResponseEntity<>(hardwareService.createECU(architecture_id, ecuDto), HttpStatus.CREATED);
 	}
 	
 	//Get all ECUs by architecture id REST API
 	@GetMapping("/architecture/{architecture_id}")
-	public ResponseEntity<List<ECUdto>> getAllEcusByArchitectureId(@PathVariable(value="architecture_id") Long architecture_id){
-		return new ResponseEntity<>(ecuService.getAllEcusByArchitectureId(architecture_id), HttpStatus.OK);
+	public ResponseEntity<List<HardwareDto>> getAllEcusByArchitectureId(@PathVariable(value="architecture_id") Long architecture_id){
+		return new ResponseEntity<>(hardwareService.getAllEcusByArchitectureId(architecture_id), HttpStatus.OK);
 	}
 	
 	//Get ECU by Id REST API
 	@GetMapping("/{id}")
-	public ResponseEntity<ECUdto> getECUbyId(@PathVariable Long id) {
-		return ResponseEntity.ok(ecuService.getECUbyId(id));
+	public ResponseEntity<HardwareDto> getECUbyId(@PathVariable Long id) {
+		return ResponseEntity.ok(hardwareService.getECUbyId(id));
 	}
 
 	//Update ECU by Id REST API
 	@PutMapping("/{id}/update")
-	public ResponseEntity<ECUdto> updateEcu(@RequestBody ECUdto ecuDto,@PathVariable("id") Long ecuId) {
-		ECUdto response = ecuService.updateEcu(ecuDto, ecuId);
+	public ResponseEntity<HardwareDto> updateEcu(@RequestBody HardwareDto ecuDto,@PathVariable("id") Long ecuId) {
+		HardwareDto response = hardwareService.updateEcu(ecuDto, ecuId);
 		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
 
 	//Delete ECU by Id REST API
 	@DeleteMapping("/{id}/delete")
 	public ResponseEntity<String> deleteEcuId(@PathVariable("id") Long ecuId) {
-		ecuService.deleteEcuId(ecuId);
+		hardwareService.deleteEcuId(ecuId);
 		return new ResponseEntity<>("ECU deleted!", HttpStatus.OK);
 	}
 	

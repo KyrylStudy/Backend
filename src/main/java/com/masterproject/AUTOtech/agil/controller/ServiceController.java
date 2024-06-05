@@ -16,10 +16,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 
-import com.masterproject.AUTOtech.agil.dto.ECUdto;
+import com.masterproject.AUTOtech.agil.dto.HardwareDto;
 import com.masterproject.AUTOtech.agil.dto.EcuSoftwareDto;
 import com.masterproject.AUTOtech.agil.dto.ServiceDto;
-import com.masterproject.AUTOtech.agil.service.ECUService;
+import com.masterproject.AUTOtech.agil.service.HardwareService;
 import com.masterproject.AUTOtech.agil.service.ServiceService;
 
 @RestController

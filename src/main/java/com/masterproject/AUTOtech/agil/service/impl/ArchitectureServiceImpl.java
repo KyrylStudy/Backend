@@ -7,11 +7,11 @@ import org.springframework.stereotype.Service;
 
 import com.masterproject.AUTOtech.agil.dto.ArchitectureDto;
 import com.masterproject.AUTOtech.agil.entity.Architecture;
-import com.masterproject.AUTOtech.agil.entity.ECU;
+import com.masterproject.AUTOtech.agil.entity.Hardware;
 import com.masterproject.AUTOtech.agil.exceprions.ArchitectureNotFound;
-import com.masterproject.AUTOtech.agil.exceprions.EcuNotFound;
+import com.masterproject.AUTOtech.agil.exceprions.HardwareNotFound;
 import com.masterproject.AUTOtech.agil.mapper.ArchitectureMapper;
-import com.masterproject.AUTOtech.agil.mapper.ECUMapper;
+import com.masterproject.AUTOtech.agil.mapper.HardwareMapper;
 import com.masterproject.AUTOtech.agil.repository.ArchitectureRepository;
 import com.masterproject.AUTOtech.agil.service.ArchitectureService;
 
@@ -57,7 +57,7 @@ public class ArchitectureServiceImpl implements ArchitectureService{
 	public void deleteArchitectureId(Long id) {
 		Architecture architecture = architectureRepository
 				.findById(id)
-				.orElseThrow(()->new EcuNotFound("Architecture could not be deleted!"));
+				.orElseThrow(()->new HardwareNotFound("Architecture could not be deleted!"));
 		architectureRepository.delete(architecture);
 		
 	}

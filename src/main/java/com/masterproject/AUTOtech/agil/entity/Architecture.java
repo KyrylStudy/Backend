@@ -37,7 +37,7 @@ public class Architecture {
 	
 	@Builder.Default
 	@OneToMany(mappedBy = "architecture", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<ECU> software = new ArrayList<ECU>();//-------------------------------------переименовать софтвеар на ецу
+    private List<Hardware> software = new ArrayList<Hardware>();//-------------------------------------переименовать софтвеар на ецу
 	
 	@Builder.Default
 	@OneToMany(mappedBy = "architecture", cascade = CascadeType.ALL, orphanRemoval = true)

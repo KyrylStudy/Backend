@@ -4,9 +4,9 @@ import java.util.List;
 
 //import org.springframework.stereotype.Service;
 
-import com.masterproject.AUTOtech.agil.dto.ECUdto;
+import com.masterproject.AUTOtech.agil.dto.HardwareDto;
 import com.masterproject.AUTOtech.agil.dto.ServiceDto;
-import com.masterproject.AUTOtech.agil.entity.ECU;
+import com.masterproject.AUTOtech.agil.entity.Hardware;
 
 //@Service
 public interface ServiceService {

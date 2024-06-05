@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.masterproject.AUTOtech.agil.dto.BusDto;
-import com.masterproject.AUTOtech.agil.dto.ECUdto;
+import com.masterproject.AUTOtech.agil.dto.HardwareDto;
 import com.masterproject.AUTOtech.agil.service.BusService;
 
 @RestController

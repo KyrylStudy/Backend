@@ -7,15 +7,15 @@ import org.springframework.stereotype.Service;
 
 import com.masterproject.AUTOtech.agil.dto.EcuHardwareDto;
 import com.masterproject.AUTOtech.agil.dto.EcuSoftwareDto;
-import com.masterproject.AUTOtech.agil.entity.ECU;
+import com.masterproject.AUTOtech.agil.entity.Hardware;
 import com.masterproject.AUTOtech.agil.entity.EcuHardware;
 import com.masterproject.AUTOtech.agil.entity.EcuSoftware;
 import com.masterproject.AUTOtech.agil.exceprions.EcuHardwareNotFound;
-import com.masterproject.AUTOtech.agil.exceprions.EcuNotFound;
+import com.masterproject.AUTOtech.agil.exceprions.HardwareNotFound;
 import com.masterproject.AUTOtech.agil.exceprions.EcuSoftwareNotFound;
 import com.masterproject.AUTOtech.agil.mapper.EcuHardwareMapper;
 import com.masterproject.AUTOtech.agil.mapper.EcuSoftwareMapper;
-import com.masterproject.AUTOtech.agil.repository.ECURepository;
+import com.masterproject.AUTOtech.agil.repository.HardwareRepository;
 import com.masterproject.AUTOtech.agil.repository.EcuHardwareRepository;
 import com.masterproject.AUTOtech.agil.service.EcuHardwareService;
 
@@ -23,20 +23,20 @@ import com.masterproject.AUTOtech.agil.service.EcuHardwareService;
 public class EcuHardwareServiceImpl implements EcuHardwareService{
 	
     private EcuHardwareRepository ecuHardwareRepository;
-    private ECURepository ecuRepository;
+    private HardwareRepository hardwareRepository;
 
-    public EcuHardwareServiceImpl(EcuHardwareRepository ecuHardwareRepository, ECURepository ecuRepository) {
+    public EcuHardwareServiceImpl(EcuHardwareRepository ecuHardwareRepository, HardwareRepository hardwareRepository) {
         this.ecuHardwareRepository = ecuHardwareRepository;
-        this.ecuRepository = ecuRepository;
+        this.hardwareRepository = hardwareRepository;
     }
 
 	@Override
 	public EcuHardwareDto createEcuHardware(Long ecu_id, EcuHardwareDto ecuHardwareDto) {
 		EcuHardware ecuHardware = EcuHardwareMapper.mapToEcuHardware(ecuHardwareDto);
 
-        ECU ecu = ecuRepository.findById(ecu_id).orElseThrow(() -> new EcuNotFound("ECU with associated hardware could not be found!"));
+        Hardware hardware = hardwareRepository.findById(ecu_id).orElseThrow(() -> new HardwareNotFound("ECU with associated hardware could not be found!"));
         
-        ecuHardware.setEcu(ecu);
+        ecuHardware.setHardware(hardware);
 
         EcuHardware newEcuHardware = ecuHardwareRepository.save(ecuHardware);
 
@@ -45,7 +45,7 @@ public class EcuHardwareServiceImpl implements EcuHardwareService{
 
 	@Override
 	public List<EcuHardwareDto> getAllEcuHardwareByEcuId(Long ecu_id) {
-		List<EcuHardware> allHardware = ecuHardwareRepository.findByEcuId(ecu_id);
+		List<EcuHardware> allHardware = ecuHardwareRepository.findByHardwareId(ecu_id);
 		return allHardware.stream().map((hardware) -> EcuHardwareMapper.mapToEcuHardwareDto(hardware)).collect(Collectors.toList());
 	}
 

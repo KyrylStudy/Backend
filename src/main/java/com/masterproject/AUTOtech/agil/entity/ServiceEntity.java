@@ -54,7 +54,7 @@ public class ServiceEntity {
 	
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ecu_id")
-    private ECU ecu;
+    private Hardware hardware;
     
 	//@Column(name = "parent_ecu_id")
 	//private Long parent_ecu_id;

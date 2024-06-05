@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.masterproject.AUTOtech.agil.dto.ECUdto;
+import com.masterproject.AUTOtech.agil.dto.HardwareDto;
 import com.masterproject.AUTOtech.agil.dto.EcuSoftwareDto;
 import com.masterproject.AUTOtech.agil.service.EcuSoftwareService;
 

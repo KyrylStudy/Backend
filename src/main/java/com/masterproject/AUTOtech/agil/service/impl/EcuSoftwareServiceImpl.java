@@ -6,12 +6,12 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 
 import com.masterproject.AUTOtech.agil.dto.EcuSoftwareDto;
-import com.masterproject.AUTOtech.agil.entity.ECU;
+import com.masterproject.AUTOtech.agil.entity.Hardware;
 import com.masterproject.AUTOtech.agil.entity.EcuSoftware;
-import com.masterproject.AUTOtech.agil.exceprions.EcuNotFound;
+import com.masterproject.AUTOtech.agil.exceprions.HardwareNotFound;
 import com.masterproject.AUTOtech.agil.exceprions.EcuSoftwareNotFound;
 import com.masterproject.AUTOtech.agil.mapper.EcuSoftwareMapper;
-import com.masterproject.AUTOtech.agil.repository.ECURepository;
+import com.masterproject.AUTOtech.agil.repository.HardwareRepository;
 import com.masterproject.AUTOtech.agil.repository.EcuSoftwareRepository;
 import com.masterproject.AUTOtech.agil.service.EcuSoftwareService;
 
@@ -19,20 +19,20 @@ import com.masterproject.AUTOtech.agil.service.EcuSoftwareService;
 public class EcuSoftwareServiceImpl implements EcuSoftwareService {
 
     private EcuSoftwareRepository ecuSoftwareRepository;
-    private ECURepository ecuRepository;
+    private HardwareRepository hardwareRepository;
 
-    public EcuSoftwareServiceImpl(EcuSoftwareRepository ecuSoftwareRepository, ECURepository ecuRepository) {
+    public EcuSoftwareServiceImpl(EcuSoftwareRepository ecuSoftwareRepository, HardwareRepository hardwareRepository) {
         this.ecuSoftwareRepository = ecuSoftwareRepository;
-        this.ecuRepository = ecuRepository;
+        this.hardwareRepository = hardwareRepository;
     }
 
     @Override
     public EcuSoftwareDto createEcuSoftwareDto(Long ecu_id, EcuSoftwareDto ecuSoftwareDto) {
         EcuSoftware ecuSoftware = EcuSoftwareMapper.mapToEcuSoftware(ecuSoftwareDto);
 
-        ECU ecu = ecuRepository.findById(ecu_id).orElseThrow(() -> new EcuNotFound("ECU with associated software could not be found!"));
+        Hardware hardware = hardwareRepository.findById(ecu_id).orElseThrow(() -> new HardwareNotFound("ECU with associated software could not be found!"));
         
-        ecuSoftware.setEcu(ecu);
+        ecuSoftware.setHardware(hardware);
 
         EcuSoftware newEcuSoftware = ecuSoftwareRepository.save(ecuSoftware);
 
@@ -49,7 +49,7 @@ public class EcuSoftwareServiceImpl implements EcuSoftwareService {
 
 	@Override
 	public List<EcuSoftwareDto> getAllEcuSoftwareByEcuId(Long ecu_id) {
-		List<EcuSoftware> allSoftware = ecuSoftwareRepository.findByEcuId(ecu_id);
+		List<EcuSoftware> allSoftware = ecuSoftwareRepository.findByHardwareId(ecu_id);
 		return allSoftware.stream().map((software) -> EcuSoftwareMapper.mapToEcuSoftwareDto(software)).collect(Collectors.toList());
 
 	}

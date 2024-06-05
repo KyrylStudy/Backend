@@ -20,7 +20,7 @@ import lombok.Data;
 @AllArgsConstructor
 @Table(name = "ECUs")
 @Entity
-public class ECU {
+public class Hardware {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -45,11 +45,11 @@ public class ECU {
 	private String connectedTo;
 	
 	@Builder.Default
-	@OneToMany(mappedBy = "ecu", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "hardware", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<EcuSoftware> software = new ArrayList<EcuSoftware>();
 	
 	@Builder.Default
-	@OneToMany(mappedBy = "ecu", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "hardware", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<EcuHardware> hardware = new ArrayList<EcuHardware>();
 	
     @ManyToOne(fetch = FetchType.LAZY)
@@ -57,7 +57,7 @@ public class ECU {
     private Architecture architecture;
     
 	@Builder.Default
-	@OneToMany(mappedBy = "ecu", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "hardware", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ServiceEntity> bus = new ArrayList<ServiceEntity>();
 	
 	

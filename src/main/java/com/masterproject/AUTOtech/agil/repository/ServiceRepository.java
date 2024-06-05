@@ -8,7 +8,7 @@ import com.masterproject.AUTOtech.agil.entity.ServiceEntity;
 
 
 public interface ServiceRepository extends JpaRepository<ServiceEntity, Long>{
-	List<ServiceEntity> findByEcuId(Long id);
+	List<ServiceEntity> findByHardwareId(Long id);
 
 }
 

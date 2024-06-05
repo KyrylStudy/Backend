@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ECUdto {
+public class HardwareDto {
 	
 	private Long id;
 	private String label;

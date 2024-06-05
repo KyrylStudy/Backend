@@ -30,7 +30,7 @@ public class EcuSoftware {
     
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ecu_id")
-    private ECU ecu;
+    private Hardware hardware;
    
     
 }

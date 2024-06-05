@@ -7,15 +7,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
 
-import com.masterproject.AUTOtech.agil.dto.ECUdto;
+import com.masterproject.AUTOtech.agil.dto.HardwareDto;
 import com.masterproject.AUTOtech.agil.dto.ServiceDto;
-import com.masterproject.AUTOtech.agil.entity.ECU;
+import com.masterproject.AUTOtech.agil.entity.Hardware;
 import com.masterproject.AUTOtech.agil.entity.ServiceEntity;
-import com.masterproject.AUTOtech.agil.exceprions.EcuNotFound;
+import com.masterproject.AUTOtech.agil.exceprions.HardwareNotFound;
 import com.masterproject.AUTOtech.agil.exceprions.ServiceNotFound;
-import com.masterproject.AUTOtech.agil.mapper.ECUMapper;
+import com.masterproject.AUTOtech.agil.mapper.HardwareMapper;
 import com.masterproject.AUTOtech.agil.mapper.ServiceMapper;
-import com.masterproject.AUTOtech.agil.repository.ECURepository;
+import com.masterproject.AUTOtech.agil.repository.HardwareRepository;
 import com.masterproject.AUTOtech.agil.repository.ServiceRepository;
 import com.masterproject.AUTOtech.agil.service.ServiceService;
 
@@ -23,24 +23,24 @@ import com.masterproject.AUTOtech.agil.service.ServiceService;
 public class ServiceServiceImpl implements ServiceService{
 
 	private ServiceRepository serviceRepository;
-	private ECURepository ecuRepository;
+	private HardwareRepository hardwareRepository;
 	
 	
 	@Autowired
-	public ServiceServiceImpl(ServiceRepository serviceRepository, ECURepository ecuRepository) {
+	public ServiceServiceImpl(ServiceRepository serviceRepository, HardwareRepository hardwareRepository) {
 		super();
-		this.ecuRepository = ecuRepository;
+		this.hardwareRepository = hardwareRepository;
 		this.serviceRepository = serviceRepository;
 	}
 
 
 	@Override
-	public ServiceDto createService(Long ecu_id, ServiceDto serviceDto) {
+	public ServiceDto createService(Long hardware_id, ServiceDto serviceDto) {
 		ServiceEntity serviceEntity = ServiceMapper.mapToService(serviceDto);
 
-        ECU ecu = ecuRepository.findById(ecu_id).orElseThrow(() -> new EcuNotFound("ECU with associated Service could not be found!"));
+        Hardware hardware = hardwareRepository.findById(hardware_id).orElseThrow(() -> new HardwareNotFound("ECU with associated Service could not be found!"));
         
-        serviceEntity.setEcu(ecu);
+        serviceEntity.setHardware(hardware);
 
         ServiceEntity newServiceEntity = serviceRepository.save(serviceEntity);
 
@@ -49,8 +49,8 @@ public class ServiceServiceImpl implements ServiceService{
 
 
 	@Override
-	public List<ServiceDto> getAllServicesByEcuId(Long ecu_id) {
-			List<ServiceEntity> serviceEntities = serviceRepository.findByEcuId(ecu_id);
+	public List<ServiceDto> getAllServicesByEcuId(Long hardware_id) {
+			List<ServiceEntity> serviceEntities = serviceRepository.findByHardwareId(hardware_id);
 			return serviceEntities.stream().map(service -> ServiceMapper.mapToServiceDto(service)).collect(Collectors.toList());
 	}
 
@@ -78,7 +78,7 @@ public class ServiceServiceImpl implements ServiceService{
 	public void deleteServiceId(Long id) {
 		ServiceEntity serviceEntity = serviceRepository
 				.findById(id)
-				.orElseThrow(()->new EcuNotFound("Service could not be deleted!"));
+				.orElseThrow(()->new HardwareNotFound("Service could not be deleted!"));
 		serviceRepository.delete(serviceEntity);
 		
 	}
