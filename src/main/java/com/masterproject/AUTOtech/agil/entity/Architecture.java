@@ -42,6 +42,10 @@ public class Architecture {
 	@Builder.Default
 	@OneToMany(mappedBy = "architecture", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Connection> connection = new ArrayList<Connection>();
+	
+	@Builder.Default
+	@OneToMany(mappedBy = "architecture", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<DataStream> dataStream = new ArrayList<DataStream>();
 
 }
 

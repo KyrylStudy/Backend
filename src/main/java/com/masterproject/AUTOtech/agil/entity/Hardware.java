@@ -50,7 +50,7 @@ public class Hardware {
 	
 	@Builder.Default
 	@OneToMany(mappedBy = "hardware", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<EcuHardware> hardware = new ArrayList<EcuHardware>();
+    private List<HardwareProperty> property = new ArrayList<HardwareProperty>();
 	
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "architecture_id")

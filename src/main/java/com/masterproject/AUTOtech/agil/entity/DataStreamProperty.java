@@ -1,7 +1,5 @@
 package com.masterproject.AUTOtech.agil.entity;
 
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,7 +8,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
 @Builder
 @Data
 @Getter
@@ -18,8 +15,8 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "hardware")
-public class EcuHardware {
+@Table(name = "data-stream_property")
+public class DataStreamProperty {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,9 +29,10 @@ public class EcuHardware {
     private String value;
     
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ecu_id")
-    private Hardware hardware;
+    @JoinColumn(name = "data-stream_id")
+    private DataStream dataStream;
    
     
 }
+
 

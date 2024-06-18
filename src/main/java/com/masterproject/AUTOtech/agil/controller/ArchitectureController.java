@@ -29,7 +29,7 @@ public class ArchitectureController {
 		this.architectureService = architectureService;
 	}
 	
-	//Add ECU REST API
+	//Add Architecture REST API
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public ResponseEntity<ArchitectureDto> createArchitecture(@RequestBody ArchitectureDto architectureDto){

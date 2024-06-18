@@ -8,9 +8,9 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import com.masterproject.AUTOtech.agil.repository.HardwareRepository;
-import com.masterproject.AUTOtech.agil.repository.EcuHardwareRepository;
-import com.masterproject.AUTOtech.agil.service.EcuHardwareService;
-import com.masterproject.AUTOtech.agil.service.impl.EcuHardwareServiceImpl;
+import com.masterproject.AUTOtech.agil.repository.HardwarePropertyRepository;
+import com.masterproject.AUTOtech.agil.service.HardwarePropertyService;
+import com.masterproject.AUTOtech.agil.service.impl.HardwarePropertyServiceImpl;
 
 @SpringBootApplication
 @ComponentScan(basePackages = {"com.masterproject.AUTOtech.agil"})
