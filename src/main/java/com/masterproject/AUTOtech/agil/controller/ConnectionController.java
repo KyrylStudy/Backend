@@ -53,7 +53,7 @@ public class ConnectionController {
 	@DeleteMapping("/{id}/delete")
 	public ResponseEntity<String> deleteBusId(@PathVariable("id") Long id) {
 		connectionService.deleteBusId(id);
-		return new ResponseEntity<>("Bus deleted!", HttpStatus.OK);
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
 }

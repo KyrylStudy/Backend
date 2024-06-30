@@ -52,7 +52,7 @@ public class DataStreamController {
 	@DeleteMapping("/{id}/delete")
 	public ResponseEntity<String> deleteDataStreamId(@PathVariable("id") Long id) {
 		dataStreamService.deleteDataStreamId(id);
-		return new ResponseEntity<>("Data Stream deleted!", HttpStatus.OK);
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
 }

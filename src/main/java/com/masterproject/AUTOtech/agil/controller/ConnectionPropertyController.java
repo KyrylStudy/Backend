@@ -60,7 +60,7 @@ public class ConnectionPropertyController {
 	@DeleteMapping("bus_property/{id}/delete")
 	public ResponseEntity<String> deleteBusPropertyId(@PathVariable("id") Long id) {
 		connectionPropertyService.deleteBusPropertyId(id);
-		return new ResponseEntity<>("Bus Property deleted!", HttpStatus.OK);
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 }
 

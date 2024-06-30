@@ -60,7 +60,7 @@ public class DataStreamPropertyController {
 	@DeleteMapping("data-stream_property/{id}/delete")
 	public ResponseEntity<String> deleteDataStreamPropertyId(@PathVariable("id") Long id) {
 		dataStreamPropertyService.deleteDataStreamPropertyId(id);
-		return new ResponseEntity<>("Data Stream Property deleted!", HttpStatus.OK);
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 }
 

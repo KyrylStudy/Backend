@@ -56,6 +56,6 @@ public class HardwarePropertyController {
 	@DeleteMapping("hardware/{id}/delete")
 	public ResponseEntity<String> deleteEcuHardwareId(@PathVariable("id") Long ecuId) {
 		hardwarePropertyService.deleteEcuHardwareId(ecuId);
-		return new ResponseEntity<>("ECU Hardware deleted!", HttpStatus.OK);
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 }

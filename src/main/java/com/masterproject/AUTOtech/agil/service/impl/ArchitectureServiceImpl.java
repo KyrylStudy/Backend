@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 
 import com.masterproject.AUTOtech.agil.dto.ArchitectureDto;
+import com.masterproject.AUTOtech.agil.dto.HardwareDto;
 import com.masterproject.AUTOtech.agil.entity.Architecture;
 import com.masterproject.AUTOtech.agil.entity.Hardware;
 import com.masterproject.AUTOtech.agil.exceprions.ArchitectureNotFound;
@@ -61,5 +62,14 @@ public class ArchitectureServiceImpl implements ArchitectureService{
 		architectureRepository.delete(architecture);
 		
 	}
+
+	@Override
+	public ArchitectureDto getArchitectureById(Long id) {
+		Architecture architecture = architectureRepository
+				.findById(id)
+				.orElseThrow(()->new ArchitectureNotFound("Architecture could not be found!"));
+		return ArchitectureMapper.mapToArchitectureDto(architecture);
+	}
+	
 
 }

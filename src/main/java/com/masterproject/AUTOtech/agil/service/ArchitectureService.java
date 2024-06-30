@@ -10,7 +10,7 @@ public interface ArchitectureService {
 	
 	List<ArchitectureDto> getAllArchitecture();
 	
-	//ECUdto getECUbyId(Long id);
+	ArchitectureDto getArchitectureById(Long id);
 	
 	ArchitectureDto updateArchitecture(ArchitectureDto architectureDto, Long id);
 	

@@ -42,6 +42,12 @@ public class ArchitectureController {
 		return new ResponseEntity<>(architectureService.getAllArchitecture(), HttpStatus.OK);
 	}
 	
+	//Get Architecture by Id REST API
+	@GetMapping("/{id}")
+	public ResponseEntity<ArchitectureDto> getArchitectureById(@PathVariable Long id) {
+		return ResponseEntity.ok(architectureService.getArchitectureById(id));
+	}
+	
 	//Update Architecture by Id REST API
 	@PutMapping("/{id}/update")
 	public ResponseEntity<ArchitectureDto> updateArchitecture(@RequestBody ArchitectureDto architectureDto,@PathVariable("id") Long architectureId) {
@@ -53,7 +59,7 @@ public class ArchitectureController {
 	@DeleteMapping("/{id}/delete")
 	public ResponseEntity<String> deleteArchitectureId(@PathVariable("id") Long architectureId) {
 		architectureService.deleteArchitectureId(architectureId);
-		return new ResponseEntity<>("Architecture deleted!", HttpStatus.OK);
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
 }
