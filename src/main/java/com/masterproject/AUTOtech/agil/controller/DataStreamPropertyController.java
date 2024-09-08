@@ -43,7 +43,7 @@ public class DataStreamPropertyController {
     }*/
     
     //Get All Bus Properties REST API
-    @GetMapping("data-stream_properties/{data_stream_id}")
+    @GetMapping("data-stream_property/get-all/{data_stream_id}")
     public ResponseEntity<List<DataStreamPropertyDto>> getAllDataStreamPropertyByDataStreamId(@PathVariable(value="data_stream_id") Long data_stream_id){
     	List<DataStreamPropertyDto> dataStreamProperty = dataStreamPropertyService.getAllDataStreamPropertyByDataStreamId(data_stream_id);
     	return ResponseEntity.ok(dataStreamProperty);

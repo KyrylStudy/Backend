@@ -20,7 +20,7 @@ import com.masterproject.AUTOtech.agil.service.HardwarePropertyService;
 
 
 @RestController
-@RequestMapping("/api/")
+@RequestMapping("/api/ecu/")
 public class HardwarePropertyController {
 	
 	private HardwarePropertyService hardwarePropertyService;
@@ -33,13 +33,13 @@ public class HardwarePropertyController {
 
 
 	// Add Ecu Hardware REST API
-    @PostMapping("/ecus/{ecu_id}/hardware")
+    @PostMapping("{ecu_id}/hardware")
     public ResponseEntity<HardwarePropertyDto> addEcuHardware(@PathVariable(value="ecu_id") Long ecu_id, @RequestBody HardwarePropertyDto hardwarePropertyDto) {
         return new ResponseEntity<>(hardwarePropertyService.createEcuHardware(ecu_id, hardwarePropertyDto), HttpStatus.CREATED);
     }
     
     //Get All hardware REST API
-    @GetMapping("/ecus/{ecu_id}/hardwares")
+    @GetMapping("{ecu_id}/hardwares")
     public ResponseEntity<List<HardwarePropertyDto>> getAllEcuHardware(@PathVariable(value="ecu_id") Long ecu_id){
     	List<HardwarePropertyDto> ecuHardware = hardwarePropertyService.getAllEcuHardwareByEcuId(ecu_id);
     	return ResponseEntity.ok(ecuHardware);
